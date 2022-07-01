@@ -3,11 +3,15 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+from turtle import title
+from urllib import request
 from django import template
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.template import loader
 from django.urls import reverse
+from django.views.generic import TemplateView
+from pprint import pprint
 
 
 @login_required(login_url="/login/")
@@ -42,3 +46,5 @@ def pages(request):
     except:
         html_template = loader.get_template('home/page-500.html')
         return HttpResponse(html_template.render(context, request))
+
+        

@@ -3,8 +3,11 @@
 Copyright (c) 2019 - present AppSeed.us
 """
 
+from unicodedata import name
 from django.urls import path, re_path
 from apps.home import views
+from apps.home.F_LSCD_03.views import (F_LSCD_03)
+from django.conf.urls import url
 
 urlpatterns = [
 
@@ -13,5 +16,10 @@ urlpatterns = [
 
     # Matches any html file
     re_path(r'^.*\.*', views.pages, name='pages'),
-
+    
+     url(
+        r'^$',
+        F_LSCD_03.as_view(),
+        name='F_LSCD_03',
+    ),
 ]

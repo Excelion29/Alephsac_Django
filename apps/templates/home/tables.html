@@ -443,52 +443,44 @@
             <div class="row text-center">
               <div class="col-3 border">
                 <div class="content" style="overflow-x: auto;white-space: nowrap;">
-                <div class="modal-header">
-                    <h5 class="modal-title">Respuesta</h5>
+                  <div class="modal-header">
+                    <h5 class="modal-title">Formulario</h5>
                   </div>
-                  <form name="formLSCD03" method="POST">
+                  <form id="id_FLSCD_03" data-post-url="{% url 'F_LSCD_03' %}" method="POST">
+                    {% csrf_token %}
                     <div class="card-body">
                       <div class="author">
                           <div id="cont" class="table-responsive">
-                          
+                            <body onload="createTableLSCD036();"></body>
                           </div>
                       </div>
                     </div>
                     <div class="card-footer">
-                      <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn btn-success " data-original-title="" title="">
-                        Añadir Dosis</i>
-                      </a>          
-                      <input type="hidden" name="consulta" value="tasa_dosis_requerida">          
-                      <button type="submit" class="btn btn-primary btn-round" >Guardar</button>   
-                  </div>
+                      <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn btn-success" data-original-title="" title="">Añadir Dosis</i></a>             
+                      <button type="submit" class="btn btn-primary" >Guardar</button>   
+                    </div>
                   </form>
                 </div>
               </div>
 
               <div class="col-9 border">
-                <div class="table-responsive p-0">
-                  <div class="dataTable-wrapper dataTable-loading no-footer sortable fixed-height fixed-columns">
-                    <table class="table align-items-center justify-content-center mb-0" id="example">
-                      <thead>
-                        <tr>
-                          <th>Nº Item</th>
-                          <th>Tasa de dosis</th>
-                          <th>Unidad</th>
-                          <th>Combinación de atenuadores</th>
-                          <th>Distancia (m)</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td scope="row"></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                          <td></td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>  
+                <div class="content" style="overflow-x: auto;white-space: nowrap;">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Respuesta</h5>
+                  </div>
+                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="thead-inverse">
+                      <tr>
+                        <th>Nº Item</th>
+                        <th>Tasa de dosis</th>
+                        <th>Unidad</th>
+                        <th>Combinación de atenuadores</th>
+                        <th>Distancia (m)</th>
+                      </tr>
+                    </thead>
+                    <tbody>                                                 
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>  
@@ -505,6 +497,7 @@
 
 <!-- Specific JS goes HERE --> 
 {% block javascripts %}
+<script src="/static/assets/js/FLSCD/table-create03.js"></script>
   <script>
     $(document).ready(function() {
         $('#example').DataTable();
