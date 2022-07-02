@@ -64,27 +64,17 @@ function removeDosis(oButton) {
     empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);
 };
 
-
-$(function(){
-    $('#id_FLSCD_03').on('submit', function(){
-        var post_url = $("#id_FLSCD_03").data("post-url");
-        
-        var formData = new FormData(this);
-        
-        var oEstado = new FormData(document.forms.namedItem("estado"));
-        
-        $.ajax({
-            url : post_url,
-            type: "POST",
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response){
-                var message = response.content.message
-                alert (message);
-            },
-        })
-        return false;
+$(document).ready(function(){
+    $('#id_FLSCD_03_button').click(function(){
+        form();
     });
 });
+
+function form(){
+    $('#id_FLSCD_03 tbody tr td').each(function(){
+        var post_url = $("#id_FLSCD_03").data("post-url");
+        let dosis = $(this).find('input[type="text"]').val();
+        alert(dosis);
+    }); 
+}
 
