@@ -64,17 +64,30 @@ function removeDosis(oButton) {
     empTab.deleteRow(oButton.parentNode.parentNode.rowIndex);
 };
 
-$(document).ready(function(){
-    $('#id_FLSCD_03_button').click(function(){
-        form();
-    });
+$(function(){
+    $('#id_FLSCD_03').on('submit',function(event){
+        event.preventDefault();
+        console.log("Already Exists");
+        // let form = new FormData(this);
+        // form.append("tasaVCV", tasaVCV.value);
+        // console.log(form.get('tasaVCV'));
+        var formdata = $('#id_FLSCD_03').serializeArray().map(function(value){
+            return value.value;
+        });
+        crear_post(formdata.slice(1));
+    })
+
+    function crear_post(formdata){
+        $.ajax({
+            url:"api/tasa_dosis",
+            type:"POST",
+            data: JSON.stringify(formdata),
+            success: function (json){
+                console.log(json['tasas_dosis']);
+            }
+
+        })
+    }
 });
 
-function form(){
-    $('#id_FLSCD_03 tbody tr td').on('submit', function(){
-        var post_url = $("#id_FLSCD_03").data("post-url");
-        let dosis = $(this).find('input[type="text"]').val();
-        alert(dosis);
-    }); 
-}
 
