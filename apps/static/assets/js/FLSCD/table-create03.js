@@ -71,7 +71,7 @@ $(document).ready(function(){
 });
 
 function form(){
-    $('#id_FLSCD_03 tbody tr td').each(function(){
+    $('#id_FLSCD_03 tbody tr td').on('submit', function(){
         var post_url = $("#id_FLSCD_03").data("post-url");
         let dosis = $(this).find('input[type="text"]').val();
         alert(dosis);
