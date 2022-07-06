@@ -104,6 +104,10 @@ $(function(){
             success: function (json){
                 var o = json['tasaVCV'];
                 $('#example').dataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ],
                     data:o,
                     columns:[
                         {"data":"tasa_dosis"},

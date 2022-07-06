@@ -18,10 +18,4 @@ urlpatterns = [
     # Matches any html file
     re_path(r'^.*\.*', views.pages, name='pages'),
     
-    url(
-        r'^$',
-        F_LSCD_03.as_view(),
-        name='F_LSCD_03',
-    ),
-
 ]
