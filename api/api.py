@@ -18,7 +18,7 @@ def TasaDosisAPIView(request):
         tasa_dosis_serializer = TasadosisSerializer(data = request.data)
         if tasa_dosis_serializer.is_valid():
             services = F_LSCD_03.get_tasa_dosis_VCV(tasa_dosis_serializer.data)
-            return Response(services)
+            return Response({'message':'Success','tasaVCV':services})
         return Response(tasa_dosis_serializer.errors)
         
     elif request.method == 'PUT':

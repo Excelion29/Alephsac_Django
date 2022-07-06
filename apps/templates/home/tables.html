@@ -455,14 +455,14 @@
                     {% csrf_token %}
                     <div class="card-body">
                       <div class="author">
-                          <div id="cont" class="table-responsive">
+                        <div id="cont" class="table-responsive">
+                            <div class="card-footer">
+                              <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn btn-success" data-original-title="" title="">Añadir Dosis</i></a>             
+                              <button type="submit" class="btn btn-primary" >Guardar</button>   
+                            </div>
                             <body onload="createTableLSCD036();"></body>                            
                           </div>
                       </div>
-                    </div>
-                    <div class="card-footer">
-                      <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn btn-success" data-original-title="" title="">Añadir Dosis</i></a>             
-                      <button type="submit" class="btn btn-primary" >Guardar</button>   
                     </div>
                   </form>
                 </div>
@@ -475,15 +475,12 @@
                   <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead-inverse">
                       <tr>
-                        <th>Nº Item</th>
                         <th>Tasa de dosis</th>
                         <th>Unidad</th>
                         <th>Combinación de atenuadores</th>
                         <th>Distancia (m)</th>
                       </tr>
                     </thead>
-                    <tbody>                                                 
-                    </tbody>
                   </table>
                 </div>
               </div>
@@ -502,16 +499,7 @@
 <!-- Specific JS goes HERE --> 
 {% block javascripts %}
 <script src="/static/assets/js/FLSCD/table-create03.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('#example').DataTable( {
-          dom: 'Bfrtip',
-          buttons: [
-              'copy', 'csv', 'excel', 'pdf'
-          ],
-      } );
-  } );
-  </script>
+
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {

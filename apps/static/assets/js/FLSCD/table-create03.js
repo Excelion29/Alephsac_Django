@@ -73,39 +73,51 @@ $(function(){
         crear_post(formdata.slice(1));
     })
     
+    // function crear_post(formdata){
+    //     $('#example').dataTable( {
+    //         dom: 'Bfrtip',
+    //         data : jsonObject,
+    //         buttons: [
+    //             'copy', 'csv', 'excel', 'pdf'
+    //         ],
+    //         ajax: {
+    //             url:"api/tasa_dosis",
+    //             type:"POST",
+    //             data: {'tasaVCV':JSON.stringify(formdata)}
+    //         },
+    //         columns: [
+    //             {"data" : "key"},
+    //             {"data" : "tasa_dosis"},
+    //             {"data" : "unidad"},     
+    //             {"data" : "unidad"},   
+    //             {"data" : "atenuador"},   
+    //             {"data" : "distancia"},         
+    //         ],
+    //     });
+    // }
     function crear_post(formdata){
+        $('#example').dataTable().fnDestroy();
         $.ajax({
             url:"api/tasa_dosis",
             type:"POST",
             data: {'tasaVCV':JSON.stringify(formdata)}, 
             success: function (json){
-                crear_respusta(json);
+                var o = json['tasaVCV'];
+                $('#example').dataTable({
+                    data:o,
+                    columns:[
+                        {"data":"tasa_dosis"},
+                        {"data":"unidad"},                        
+                        {"data":"atenuador"},
+                        {"data":"distancia"}
+                    ]
+                }).api();
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 alert("Status: " + textStatus); alert("Error: " + errorThrown); 
-            }  
-
+            },
         });
-
-    }
-
-    function crear_respusta(attributes){
-        var Tbl = document.getElementById("example");
-        var tblBody = Tbl.getElementsByTagName("tbody");     
-        
-        
-        tblBody.appendChild(attributes.map(function(item){
-            var hilera = document.createElement("tr");
-            
-            for (let index = 0; index < item.length; index++) {
-                var celda = document.createElement("td");
-                var textoCelda = document.createTextNode("celda");
-                celda.appendChild(textoCelda);
-            }
-            return hilera.appendChild(celda);
-        }));
-
-        return Tbl.appendChild(tblBody);
+    
     }
 });
 
