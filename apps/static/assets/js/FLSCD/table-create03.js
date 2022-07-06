@@ -67,26 +67,45 @@ function removeDosis(oButton) {
 $(function(){
     $('#id_FLSCD_03').on('submit',function(event){
         event.preventDefault();
-        console.log("Already Exists");
-        // let form = new FormData(this);
-        // form.append("tasaVCV", tasaVCV.value);
-        // console.log(form.get('tasaVCV'));
         var formdata = $('#id_FLSCD_03').serializeArray().map(function(value){
-            return value.value;
+            return parseFloat(value.value);
         });
         crear_post(formdata.slice(1));
     })
-
+    
     function crear_post(formdata){
         $.ajax({
             url:"api/tasa_dosis",
             type:"POST",
-            data: JSON.stringify(formdata),
+            data: {'tasaVCV':JSON.stringify(formdata)}, 
             success: function (json){
-                console.log(json['tasas_dosis']);
-            }
+                crear_respusta(json);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+            }  
 
-        })
+        });
+
+    }
+
+    function crear_respusta(attributes){
+        var Tbl = document.getElementById("example");
+        var tblBody = Tbl.getElementsByTagName("tbody");     
+        
+        
+        tblBody.appendChild(attributes.map(function(item){
+            var hilera = document.createElement("tr");
+            
+            for (let index = 0; index < item.length; index++) {
+                var celda = document.createElement("td");
+                var textoCelda = document.createTextNode("celda");
+                celda.appendChild(textoCelda);
+            }
+            return hilera.appendChild(celda);
+        }));
+
+        return Tbl.appendChild(tblBody);
     }
 });
 

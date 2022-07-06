@@ -18,13 +18,9 @@ class TasaDosisView(View):
         return JsonResponse(datos)
 
     def post(self, request):
-
-
         jd= json.loads(request.body)
-        # jd = list(map(lambda x:x, request))
-        datos = {'message':'Success','tasas_dosis':request}
-
-        return request
+        datos = {'message':'Success','tasas_dosis':jd['tasa_dosis']}
+        return JsonResponse(datos)
 
     def put(self, request):
         pass

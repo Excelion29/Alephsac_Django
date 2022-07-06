@@ -1,7 +1,7 @@
 from django.urls import path
+from api.api import TasaDosisAPIView
 
-from api.views import TasaDosisView
 
 urlpatterns = [
-    path('tasa_dosis',TasaDosisView.as_view(),name='tasa_dosis_list')
+    path('tasa_dosis',TasaDosisAPIView,name='tasa_dosis_list')
 ]
