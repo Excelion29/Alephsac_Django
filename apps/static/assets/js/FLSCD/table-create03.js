@@ -111,7 +111,12 @@ $(function(){
         $('#F_LSCD_012').dataTable({
             data:request,
             columns:[
-                {"data":"tasa_dosis"},
+                {   
+                    "data":"tasa_dosis",
+                    render:function (data){
+                        return data+"<input type='hidden' name='tasaVCV' class='form-control border-0 ps-3' value="+data+" required></input>";
+                    }        
+                },
                 {
                     render: function () {
                         return "<input type='text' name='lectura1' class='form-control border-0 ps-3' value='0.01' required></input>";
