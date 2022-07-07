@@ -457,8 +457,8 @@
                       <div class="author">
                         <div id="cont" class="table-responsive">
                             <div class="card-footer">
-                              <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn btn-success" data-original-title="" title="">Añadir Dosis</i></a>             
-                              <button type="submit" class="btn btn-primary" >Guardar</button>   
+                              <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn bg-gradient-success  my-1 me-1" data-original-title="" title="">Añadir Dosis</i></a>             
+                              <button type="submit" class="btn bg-gradient-primary my-1 me-1">Calcular</button>   
                             </div>
                             <body onload="createTableLSCD036();"></body>                            
                           </div>
@@ -505,24 +505,30 @@
                   <div class="modal-header">
                     <h5 class="modal-title">Formulario</h5>
                   </div>
-                  <table id="F_LSCD_012" class="table table-striped table-bordered" style="width:100%">
-                    <thead class="thead-inverse">
-                      <tr>
-                        <th>Tasa VCV</th>
-                        <th>LECTURA 1</th>
-                        <th>LECTURA 2</th>
-                        <th>LECTURA 3</th>
-                        <th>LECTURA 4</th>
-                        <th>LECTURA 5</th>
-                        <th>LECTURA 6</th>
-                        <th>LECTURA 7</th>
-                        <th>LECTURA 8</th>
-                        <th>LECTURA 9</th>
-                        <th>LECTURA 10</th>
-                        <th>UNIDAD</th>
-                      </tr>
-                    </thead>
-                  </table>
+                  <form id="id_FLSCD_012"  method="POST">
+                    {% csrf_token %}
+                    <table id="F_LSCD_012" class="table table-striped table-bordered" style="width:100%">
+                      <thead class="thead-inverse">
+                        <tr>
+                          <th>Tasa VCV</th>
+                          <th>LECTURA 1</th>
+                          <th>LECTURA 2</th>
+                          <th>LECTURA 3</th>
+                          <th>LECTURA 4</th>
+                          <th>LECTURA 5</th>
+                          <th>LECTURA 6</th>
+                          <th>LECTURA 7</th>
+                          <th>LECTURA 8</th>
+                          <th>LECTURA 9</th>
+                          <th>LECTURA 10</th>
+                          <th>UNIDAD</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <div class="card-footer">      
+                      <button type="submit" class="btn bg-gradient-primary my-1 me-1">Calcular</button> 
+                    </div>
+                </form>
                 </div>
               </div>
               <div class="col-12 border">

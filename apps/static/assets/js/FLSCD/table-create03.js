@@ -36,12 +36,12 @@ function addDosis(){
         td = tr.insertCell(c);
         if (c == 0) {              
             var i = document.createElement('i');
-            i.setAttribute('class','ni ni-fat-remove');
+            i.setAttribute('class','ni ni-fat-remove cursor-pointer');
             var span = document.createElement('span');
             var button = document.createElement('button');
             span.setAttribute('class','btn-inner--icon');
             button.setAttribute('type', 'button');
-            button.setAttribute('class', 'btn btn-icon btn-2 btn-primary');
+            button.setAttribute('class', 'badge bg-gradient-danger');
             button.setAttribute('onclick', 'removeDosis(this)');
             span.appendChild(i);
             button.appendChild(span);
@@ -72,29 +72,7 @@ $(function(){
         });
         crear_post(formdata.slice(1));
     })
-    
-    // function crear_post(formdata){
-    //     $('#example').dataTable( {
-    //         dom: 'Bfrtip',
-    //         data : jsonObject,
-    //         buttons: [
-    //             'copy', 'csv', 'excel', 'pdf'
-    //         ],
-    //         ajax: {
-    //             url:"api/tasa_dosis",
-    //             type:"POST",
-    //             data: {'tasaVCV':JSON.stringify(formdata)}
-    //         },
-    //         columns: [
-    //             {"data" : "key"},
-    //             {"data" : "tasa_dosis"},
-    //             {"data" : "unidad"},     
-    //             {"data" : "unidad"},   
-    //             {"data" : "atenuador"},   
-    //             {"data" : "distancia"},         
-    //         ],
-    //     });
-    // }
+
     function crear_post(formdata){
         $('#F_LSCD_03').dataTable().fnDestroy();
         $('#F_LSCD_012').dataTable().fnDestroy();
@@ -131,26 +109,76 @@ $(function(){
 
     function crear_F_LSCD012(request){
         $('#F_LSCD_012').dataTable({
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
             data:request,
             columns:[
                 {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
-                {"data":"tasa_dosis"},
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura1' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura2' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura3' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura4' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura5' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura6' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura7' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura8' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura9' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<input type='text' name='lectura10' class='form-control border-0 ps-3' value='0.01' required></input>";
+                    }
+                },
+                {
+                    render: function () {
+                        return "<select name='select' required> <option selected value='' disabled> Unidades </option> <option value='µSv'>µSv</option> <option value='mSv'>mSv</option> <option value='Sv'>Sv</option><option value='R'>R</option><option value='mR'>mR</option><option value='µR'>µR</option><option value='rem'>rem</option><option value='mrem'>mrem</option></select>";
+                    }
+                }
             ]
         }).api();
     }
+
+
+    $('#id_FLSCD_012').on('submit',function(event){
+        event.preventDefault();
+        var formdata = $('#id_FLSCD_012').serializeArray().map(function(value){
+            return value.value;
+        });
+        console.log(formdata.slice(2));
+    })
 });
 
 
