@@ -96,32 +96,60 @@ $(function(){
     //     });
     // }
     function crear_post(formdata){
-        $('#example').dataTable().fnDestroy();
+        $('#F_LSCD_03').dataTable().fnDestroy();
+        $('#F_LSCD_012').dataTable().fnDestroy();
         $.ajax({
             url:"api/tasa_dosis",
             type:"POST",
             data: {'tasaVCV':JSON.stringify(formdata)}, 
             success: function (json){
                 var o = json['tasaVCV'];
-                $('#example').dataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ],
-                    data:o,
-                    columns:[
-                        {"data":"tasa_dosis"},
-                        {"data":"unidad"},                        
-                        {"data":"atenuador"},
-                        {"data":"distancia"}
-                    ]
-                }).api();
+                crear_F_LSCD03(o); 
+                crear_F_LSCD012(o);            
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 alert("Status: " + textStatus); alert("Error: " + errorThrown); 
             },
-        });
-    
+        });    
+    }
+
+    function crear_F_LSCD03(request){
+        $('#F_LSCD_03').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            data:request,
+            columns:[
+                {"data":"tasa_dosis"},
+                {"data":"unidad"},                        
+                {"data":"atenuador"},
+                {"data":"distancia"}
+            ]
+        }).api();
+    }
+
+    function crear_F_LSCD012(request){
+        $('#F_LSCD_012').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            data:request,
+            columns:[
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+                {"data":"tasa_dosis"},
+            ]
+        }).api();
     }
 });
 

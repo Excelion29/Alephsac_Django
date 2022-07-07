@@ -11,7 +11,7 @@ class F_LSCD_03(F_LSCD03):
 
     def get_tasa_dosis_VCV(self):
         
-        value = list(map(lambda x:x, self['tasaVCV']))
+        # value = list(map(lambda x:x, self['tasaVCV']))
         data = []
         for item in self['tasaVCV']:
             if (item>=4.16E-03 and item<=3.75E-02):
