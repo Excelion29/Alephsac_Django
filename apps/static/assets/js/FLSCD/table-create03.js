@@ -176,14 +176,66 @@ $(function(){
         }).api();
     }
 
-
     $('#id_FLSCD_012').on('submit',function(event){
         event.preventDefault();
+        var form_array = new Array();
         var formdata = $('#id_FLSCD_012').serializeArray().map(function(value){
             return value.value;
         });
-        console.log(formdata.slice(2));
+        var array_clean = formdata.slice(2);
+        for (let index = 0; index <= array_clean.length/12*11; index+=12) {  
+            form_array.push(array_clean.slice(0+index, 12+index));         
+        }
+        form_F_LSCF_012(form_array);
     })
+
+    function form_F_LSCF_012(attributes){
+        $('#F_LSCD0_12_lecturas').dataTable().fnDestroy();
+        $.ajax({
+            url:"api/F_LSCD_012",
+            type:"POST",
+            data: {'Lecturas':JSON.stringify(attributes)}, 
+            success: function (json){
+                var o = json['Lecturas'];  
+                crear_F_LSCD0_12_lecturas(o);       
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+            },
+        });  
+    }
+
+    function crear_F_LSCD0_12_lecturas(request){
+        $('#F_LSCD0_12_lecturas').dataTable({
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            data:request,
+            columns:[
+                {"data":"tasa_dosis"},
+                {"data":"lectura_1"},                        
+                {"data":"lectura_2"},
+                {"data":"lectura_3"},
+                {"data":"lectura_4"},
+                {"data":"lectura_5"},
+                {"data":"lectura_6"},
+                {"data":"lectura_7"},
+                {"data":"lectura_8"},
+                {"data":"lectura_9"},
+                {"data":"lectura_10"},
+                {"data":""},
+                {"data":"unidad"},
+                {"data":""},
+                {"data":""},
+                {"data":""},
+                {"data":""},
+                {"data":""},
+                {"data":""},
+                {"data":""}
+            ]
+        }).api();
+    }
 });
 
 
