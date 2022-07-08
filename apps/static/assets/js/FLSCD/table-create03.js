@@ -224,15 +224,15 @@ $(function(){
                 {"data":"lectura_8"},
                 {"data":"lectura_9"},
                 {"data":"lectura_10"},
-                {"data":""},
+                {"data":"--"},
                 {"data":"unidad"},
-                {"data":""},
-                {"data":""},
-                {"data":""},
-                {"data":""},
-                {"data":""},
-                {"data":""},
-                {"data":""}
+                {"data":"--"},
+                {"data":"--"},
+                {"data":"--"},
+                {"data":"--"},
+                {"data":"--"},
+                {"data":"--"},
+                {"data":"--"},
             ]
         }).api();
     }
