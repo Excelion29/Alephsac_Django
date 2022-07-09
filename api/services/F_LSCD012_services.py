@@ -22,6 +22,29 @@ class F_LSCD_012_service():
             lectura_9 = item[9]
             lectura_10 = item[10]
             unidad = item[11]
-            data.append({'tasa_dosis':tasaVCV,'lectura_1':lectura_1,'lectura_2':lectura_2,'lectura_3':lectura_3,'lectura_4':lectura_4,'lectura_5':lectura_5,'lectura_6':lectura_6,'lectura_7':lectura_7,'lectura_8':lectura_8,'lectura_9':lectura_9,'lectura_10':lectura_10,'unidad':unidad})  
+            promedio = round((float(item[1])+float(item[2])+float(item[3])+float(item[4])+float(item[5])+float(item[6])+float(item[7])+float(item[8])+float(item[9])+float(item[10]))/10, 2)
+            data.append(
+                {
+                    'tasa_dosis':tasaVCV,
+                    'lectura_1':lectura_1,
+                    'lectura_2':lectura_2,
+                    'lectura_3':lectura_3,
+                    'lectura_4':lectura_4,
+                    'lectura_5':lectura_5,
+                    'lectura_6':lectura_6,
+                    'lectura_7':lectura_7,
+                    'lectura_8':lectura_8,
+                    'lectura_9':lectura_9,
+                    'lectura_10':lectura_10,
+                    'lectura_minima':'lectura_minima',
+                    'unidad':unidad,
+                    'promedio':promedio,
+                    'd_s':'d_s',
+                    'c_v':'c_v',    
+                    'factor_k':'factor_k',
+                    'var_resp':'var_resp',
+                    'incert':'incert',
+                    'test':'test',
+                })  
         
         return data

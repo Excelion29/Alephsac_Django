@@ -224,15 +224,15 @@ $(function(){
                 {"data":"lectura_8"},
                 {"data":"lectura_9"},
                 {"data":"lectura_10"},
-                {"data":"--"},
+                {"data":"lectura_minima"},
                 {"data":"unidad"},
-                {"data":"--"},
-                {"data":"--"},
-                {"data":"--"},
-                {"data":"--"},
-                {"data":"--"},
-                {"data":"--"},
-                {"data":"--"},
+                {"data":"promedio"},
+                {"data":"d_s"},
+                {"data":"c_v"},
+                {"data":"factor_k"},
+                {"data":"var_resp"},
+                {"data":"incert"},
+                {"data":"test"},
             ]
         }).api();
     }
