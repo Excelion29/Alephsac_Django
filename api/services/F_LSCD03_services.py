@@ -14,37 +14,38 @@ class F_LSCD_03(F_LSCD03):
         # value = list(map(lambda x:x, self['tasaVCV']))
         data = []
         for item in self['tasaVCV']:
-            if (item>=4.16E-03 and item<=3.75E-02):
+            if (float(item)>=4.16E-03 and float(item)<=3.75E-02):
                 atn = ATENUAD[0]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[0]/item))
-            elif (item>=2.13E-03 and item<=6.19E-03):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[0]/float(item)))
+            elif (float(item)>=2.13E-03 and float(item)<=6.19E-03):
                 atn = ATENUAD[1]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[1]/item)) 
-            elif (item>=9.54E-04 and item<=2.65E-03):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[1]/float(item))) 
+            elif (float(item)>=9.54E-04 and float(item)<=2.65E-03):
                 atn = ATENUAD[2]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[2]/item)) 
-            elif (item>=3.68E-04 and item<=1.02E-03):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[2]/float(item))) 
+            elif (float(item)>=3.68E-04 and float(item)<=1.02E-03):
                 atn = ATENUAD[3]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[3]/item)) 
-            elif (item>=1.49E-04 and item<=4.13E-04):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[3]/float(item))) 
+            elif (float(item)>=1.49E-04 and float(item)<=4.13E-04):
                 atn = ATENUAD[4]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[4]/item)) 
-            elif (item>=6.41E-05 and item<=1.78E-04):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[4]/float(item))) 
+            elif (float(item)>=6.41E-05 and float(item)<=1.78E-04):
                 atn = ATENUAD[5]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[5]/item)) 
-            elif (item>=3.93E-05 and item<=1.09E-04):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[5]/float(item))) 
+            elif (float(item)>=3.93E-05 and float(item)<=1.09E-04):
                 atn = ATENUAD[6]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[6]/item)) 
-            elif (item>=1.55E-05 and item<=4.30E-05):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[6]/float(item))) 
+            elif (float(item)>=1.55E-05 and float(item)<=4.30E-05):
                 atn = ATENUAD[7]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[7]/item)) 
-            elif (item>=6.73E-06 and item<=1.87E-05):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[7]/float(item))) 
+            elif (float(item)>=6.73E-06 and float(item)<=1.87E-05):
                 atn = ATENUAD[8]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[8]/item)) 
-            elif (item>=3.00E-06 and item<=8.34E-06):
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[8]/float(item))) 
+            elif (float(item)>=3.00E-06 and float(item)<=8.34E-06):
                 atn = ATENUAD[9]
-                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[9]/item)) 
+                dist = "{0:.3f}".format(math.sqrt(DISTANCIA[9]/float(item))) 
+
             
-            data.append({'tasa_dosis':item,'unidad':'Sv/h','atenuador':atn,'distancia':dist})  
+            data.append({'tasa_dosis':("{:.1f}".format(float(item)*1000000)),'unidad':'Sv/h','atenuador':atn,'distancia':dist})  
 
         return data

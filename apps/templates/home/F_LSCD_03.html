@@ -8,6 +8,7 @@
 {% block content %}
 
 <div class="container-fluid py-4">
+
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
@@ -438,7 +439,7 @@
       </div>
     </div> -->
 
-    <div class="row">
+    <div class="row" id="F_LSCD0_03_dosis" >
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
@@ -491,8 +492,7 @@
     </div>
 
 
-
-    <div class="row">
+    <div class="row" style="display:none" id="PAGE_F_LSCD0_12_LECTURAS" >
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
@@ -570,6 +570,84 @@
       </div>
     </div>
 
+    {% comment %} <div class="row" style="display:none" id="Insert_Cal_Mon">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>F-LSCD-012</h6>
+          </div>
+          <div class="container-fluid" >
+            <div class="row text-center">              
+              <div class="col-12 border">
+                <div class="content" style="overflow-x: auto;white-space: nowrap;">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Formulario</h5>
+                  </div>
+                  <form id="example"  method="POST">
+                    {% csrf_token %}
+                    <table id="example" class="table table-striped table-bordered" style="width:100%">
+                      <thead class="thead-inverse">
+                        <tr>
+                          <th>Tasa VCV</th>
+                          <th>LECTURA 1</th>
+                          <th>LECTURA 2</th>
+                          <th>LECTURA 3</th>
+                          <th>LECTURA 4</th>
+                          <th>LECTURA 5</th>
+                          <th>LECTURA 6</th>
+                          <th>LECTURA 7</th>
+                          <th>LECTURA 8</th>
+                          <th>LECTURA 9</th>
+                          <th>LECTURA 10</th>
+                          <th>UNIDAD</th>
+                        </tr>
+                      </thead>
+                    </table>
+                    <div class="card-footer">      
+                      <button type="submit" class="btn bg-gradient-primary my-1 me-1">Calcular</button> 
+                    </div>
+                </form>
+                </div>
+              </div>
+              <div class="col-12 border">
+                <div class="content" style="overflow-x: auto;white-space: nowrap;">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Respuesta</h5>
+                  </div>
+                  <table id="example" class="table table-striped table-bordered" style="width:100%">
+                    <thead class="thead-inverse">
+                      <tr>
+                        <th>Tasa VCV</th>
+                        <th>LECTURA 1</th>
+                        <th>LECTURA 2</th>
+                        <th>LECTURA 3</th>
+                        <th>LECTURA 4</th>
+                        <th>LECTURA 5</th>
+                        <th>LECTURA 6</th>
+                        <th>LECTURA 7</th>
+                        <th>LECTURA 8</th>
+                        <th>LECTURA 9</th>
+                        <th>LECTURA 10</th>
+                        <th>LECTURA MÍNIMA</th>
+                        <th>UNIDAD</th>
+                        <th>PROMEDIO</th>
+                        <th>D.S.</th>
+                        <th>C.V.</th>
+                        <th>FACTOR K</th>
+                        <th>VAR. RESP(%)</th>
+                        <th>INCERT(%)</th>
+                        <th>TEST</th>
+                      </tr>
+                    </thead>
+                  </table>
+                </div>
+              </div>
+            </div>  
+          </div>  
+        </div>
+      </div>
+    </div> {% endcomment %}
+
 
     {% include "includes/footer.html" %}
     
@@ -581,6 +659,18 @@
 {% block javascripts %}
 <script src="/static/assets/js/FLSCD/table-create03.js"></script>
 
+  <script>
+    $("#url_SECTION_FLSCD_012").on("click", function(){
+      $('#F_LSCD0_03_dosis').hide(1000);
+      $('#Insert_Cal_Mon').hide(1000);
+      $('#PAGE_F_LSCD0_12_LECTURAS').show();
+    });
+    $("#url_SECTION_Insert_Cal_Mon").on("click", function(){
+      $('#PAGE_F_LSCD0_12_LECTURAS').hide(1000);
+      $('#F_LSCD0_03_dosis').hide(1000);
+      $('#Insert_Cal_Mon').show();
+    });
+  </script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
