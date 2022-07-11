@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'apps.home',  # Enable the inner home (home)
     'api',
     'rest_framework',
-    'numpy'
+    'numpy',
 ]
 
 REST_FRAMEWORK = {

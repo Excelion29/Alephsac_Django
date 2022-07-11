@@ -29,8 +29,11 @@
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
+        <li class="nav-item mt-3">
+          <h6 class="ps-4 text-uppercase text-xs font-weight-bolder opacity-6">Utilities pages</h6>
+        </li>
         <li class="nav-item mb-1">
-          <a class="nav-link {% if 'F_LSCD_03.html' in segment %} active {% endif %}" href="/F_LSCD_03.html">
+          <a class="nav-link {% if 'F_LSCD_03.html' in segment %} active {% endif %}"  id="url_SECTION_FLSCD_03" href="/F_LSCD_03.html">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -49,8 +52,8 @@
             <span class="nav-link-text ms-1">F-LSCD-03</span>
           </a>
         </li>
-        <li class="nav-item mb-1">
-          <a class="nav-link {% if 'F_LSCD_012' in segment %} active {% endif %}" id="url_SECTION_FLSCD_012" href="#PAGE_F_LSCD0_12_LECTURAS">
+        <li class="nav-item mb-1" style="display:none" id="id_li_F_LSCD_012">
+          <a class="nav-link {% if 'F_LSCD_012' in segment %} active {% endif %}" id="url_SECTION_FLSCD_012" href="#">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -69,8 +72,8 @@
             <span class="nav-link-text ms-1">F-LSCD-012 </span>
           </a>
         </li>
-        <li class="nav-item mb-1">
-          <a class="nav-link {% if 'Insert_Cal_Mon' in segment %} active {% endif %}" id="url_SECTION_Insert_Cal_Mon" href="#Insert_Cal_Mon">
+        <li class="nav-item mb-1" style="display:none" id="id_li_Insert_Cal_Mon">
+          <a class="nav-link {% if 'Insert_Cal_Mon' in segment %} active {% endif %}" id="url_SECTION_Insert_Cal_Mon" href="#">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <title>office</title>
@@ -89,7 +92,7 @@
             <span class="nav-link-text ms-1">Insert. Cal. Mon.</span>
           </a>
         </li>
-        <!-- <li class="nav-item mb-1">
+        {% comment %} <li class="nav-item mb-1">
           <a class="nav-link {% if 'rtl' in segment %} active {% endif %}" href="/rtl.html">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -109,10 +112,7 @@
             </div>
             <span class="nav-link-text ms-1">RTL</span>
           </a>
-        </li>
-        <li class="nav-item mt-3">
-          <h6 class="ps-4 text-uppercase text-xs font-weight-bolder opacity-6">Utilities pages</h6>
-        </li>
+        </li>        
         <li class="nav-item mb-1">
           <a class="nav-link  " href="/sign-in.html">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
@@ -154,7 +154,7 @@
             </div>
             <span class="nav-link-text ms-1">Sign Up (Template)</span>
           </a>
-        </li>
+        </li>{% endcomment %}
         <li class="nav-item mb-1">
           <a class="nav-link {% if 'profile' in segment %} active {% endif %}" href="/profile.html">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
@@ -176,7 +176,7 @@
             <span class="nav-link-text ms-1">Profile</span>
           </a>
         </li>
-        <li class="nav-item mb-1">
+        {% comment %}  <li class="nav-item mb-1">
           <a class="nav-link {% if 'billing' in segment %} active {% endif %}" href="/billing.html">
             <div class="icon icon-shape icon-xs shadow border-radius-sm bg-gradient-light text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -195,7 +195,7 @@
             </div>
             <span class="nav-link-text ms-1">Billing</span>
           </a>
-        </li> -->
+        </li> {% endcomment %}
       </ul>
     </div>
     <!-- <div class="sidenav-footer mx-3 mt-3 pt-3">

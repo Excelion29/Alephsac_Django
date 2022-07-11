@@ -69,7 +69,7 @@ $(function(){
         event.preventDefault();
         var formdata = $('#id_FLSCD_03').serializeArray().map(function(value){
             return parseFloat(value.value);
-        });
+        }); 
         crear_post(formdata.slice(1));
     })
 
@@ -83,7 +83,7 @@ $(function(){
             success: function (json){
                 var o = json['tasaVCV'];
                 crear_F_LSCD03(o); 
-                crear_F_LSCD012(o);            
+                crear_F_LSCD012(o);          
             },
             error: function(XMLHttpRequest, textStatus, errorThrown) { 
                 alert("Status: " + textStatus); alert("Error: " + errorThrown); 
@@ -174,6 +174,7 @@ $(function(){
                 }
             ]
         }).api();
+        $('#id_li_F_LSCD_012').show(500); 
     }
 
     $('#id_FLSCD_012').on('submit',function(event){
@@ -236,6 +237,7 @@ $(function(){
                 {"data":"test"},
             ]
         }).api();
+        $('#id_li_Insert_Cal_Mon').show(500);
     }
 });
 
