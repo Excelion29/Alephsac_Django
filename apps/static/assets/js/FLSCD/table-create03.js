@@ -243,8 +243,12 @@ $(function(){
     }
 
     function crear_Calibraciones(request){ 
+        var ordinales = ['PRIMER', 'SEGUNDO', 'TERCER', 'CUARTO', 'QUINTO', 'SEXTO', 'SÉPTIMO', 'OCTAVO', 'NOVENO', 'DÉCIMO', 'UNDÉCIMO', 'DUODÉCIMO', 'DÉCIMO TERCER', 'DÉCIMO CUARTO', 'DÉCIMO QUINTO'];
+        var cabezales_puntos_de_calibracion = ['Tasa de dosis VCV (µSv/h)','Lectura tasa de dosis del monitor (unidad del monitor)','D.S. lecturas monitor','Lectura mínima del monitor','# Lecturas tomados del monitor','Distancia fuente - monitor(m)'] 
+        
         $('#calibraciones_contenedor').html('');
         let  div_contenedor_global = document.getElementById("calibraciones_contenedor");
+        
         
         for (let index = 0; index < request.length; index++) {   
 
@@ -253,19 +257,19 @@ $(function(){
             button.setAttribute('class',"btn bg-gradient-info btn-block mb-3");
             button.setAttribute('data-bs-toggle',"modal" );
             button.setAttribute('data-bs-target',"#exampleModalLong"+index+''+request[index].unidad);            
-            button.appendChild(document.createTextNode(request[index].tasa_dosis+' ('+request[index].unidad+')'));
+            button.appendChild(document.createTextNode(request[index].tasa_dosis+' '+request[index].unidad));
 
 
             var div_modal_fade = document.createElement('div');
             div_modal_fade.setAttribute('class',"modal fade");
-            div_modal_fade.setAttribute('id',"#exampleModalLong"+index+''+request[index].unidad);
+            div_modal_fade.setAttribute('id',"exampleModalLong"+index+''+request[index].unidad);
             div_modal_fade.setAttribute('tabindex',"-1");
             div_modal_fade.setAttribute('role',"dialog");
-            div_modal_fade.setAttribute('aria-labelledby',"modal-default");
+            div_modal_fade.setAttribute('aria-labelledby',"exampleModalLongTitle");
             div_modal_fade.setAttribute('aria-hidden','true');
 
             var div_modal_dialog = document.createElement('div');
-            div_modal_dialog.setAttribute('class',"modal-dialog modal- modal-dialog-centered modal-");
+            div_modal_dialog.setAttribute('class',"modal-dialog");
             div_modal_dialog.setAttribute('role',"document" );
             div_modal_fade.appendChild(div_modal_dialog);
 
@@ -277,11 +281,11 @@ $(function(){
             div_modal_header.setAttribute('class',"modal-header");
             div_modal_content.appendChild(div_modal_header);
 
-            var h6 = document.createElement('h6');
-            h6.setAttribute('class',"modal-title");
-            h6.setAttribute('id',"modal-title-default");
-            h6.appendChild(document.createTextNode('Modal title'));
-            div_modal_header.appendChild(h6);
+            var h5 = document.createElement('h5');
+            h5.setAttribute('class',"modal-title");
+            h5.setAttribute('id',"exampleModalLongTitle");
+            h5.appendChild(document.createTextNode(ordinales[index]+' PUNTO DE CALIBRACIÓN'));
+            div_modal_header.appendChild(h5);
 
             var button_click = document.createElement('button');
             button_click.setAttribute('type',"button");
@@ -298,6 +302,62 @@ $(function(){
             var div_modal_body = document.createElement('div');
             div_modal_body.setAttribute('class',"modal-body");
             div_modal_content.appendChild(div_modal_body);
+
+
+            // ANTES DEL AJUSTE 
+
+            // CONTENEDOR GLOBAL
+            var div_col_border = document.createElement('div');
+            div_col_border.setAttribute('class','col-6 border');
+            div_modal_body.appendChild(div_col_border);
+
+            // CONTENEDOR TITLE
+            var div_card_body = document.createElement('div');
+            div_card_body.setAttribute('class','card-body');            
+            div_col_border.appendChild(div_card_body);
+
+            var h6_card_title = document.createElement('h6');
+            h6_card_title.setAttribute('class','card-title');
+            h6_card_title.appendChild(document.createTextNode('Antes del ajuste'));         
+            div_card_body.appendChild(h6_card_title);
+
+            // CONTENEDOR TABLES DETAILS 1
+            var div_card_check1 = document.createElement('div');
+            div_card_check1.setAttribute('class','card-deck');       
+            div_col_border.appendChild(div_card_check1);
+
+            var div_card1 = document.createElement('div');
+            div_card1.setAttribute('class','card');   
+            div_card_check1.appendChild(div_card1);
+
+            var table1 = document.createElement('table');
+            table1.setAttribute('class','table');
+
+            for (let item_cabezal = 0; item_cabezal < cabezales_puntos_de_calibracion.length; item_cabezal++) {
+                var tr1 = document.createElement('tr');
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                td1.setAttribute('scope','row');   
+                td1.setAttribute('class','text-left');  
+                td1.appendChild(document.createTextNode(cabezales_puntos_de_calibracion[item_cabezal]));  
+                tr1.appendChild(td1);
+
+                td2.setAttribute('scope','row');   
+                td2.appendChild(document.createTextNode(request[index].tasa_dosis));  
+                tr1.appendChild(td2);
+
+                table1.appendChild(tr1);
+            }
+            div_card1.appendChild(table1);
+
+            
+
+
+
+
+
+
+
 
             var div_modal_footer= document.createElement('div');
             div_modal_footer.setAttribute('class',"modal-footer");

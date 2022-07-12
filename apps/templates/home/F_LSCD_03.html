@@ -502,7 +502,33 @@
       </div>
     </div>
 
+
+
     <div class="row" style="display:none" id="PAGE_F_LSCD0_12_LECTURAS" >
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>TOMA DE DATOS DE CALIBRACIÓN DE MONITORES DE RADIACIÓN</h6>
+          </div>
+          <div class="container-fluid" >
+            <div class="row text-center">  
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <form method="POST" action="" name='upload_form' id='upload_form' enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <label for="formFile" class="form-label">Default file input example</label>
+                        <input class="form-control" type="file" id="formFile_OT">
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
@@ -691,10 +717,7 @@
               </div> 
               <div class="col-12 col-xl-8">
                 <div id="calibraciones_contenedor">
-                  
-                    
-                   
-                    
+
                 </div>
               </div>              
             </div>
@@ -713,6 +736,7 @@
 <!-- Specific JS goes HERE --> 
 {% block javascripts %}
 <script src="/static/assets/js/FLSCD/table-create03.js"></script>
+<script src="/static/assets/js/FLSCD/PDF_read.js"></script>
 <script src="/static/assets/js/Transitions/transitions.js"></script>
 
   <script>
