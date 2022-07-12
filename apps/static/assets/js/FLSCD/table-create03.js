@@ -191,7 +191,6 @@ $(function(){
     })
 
     function form_F_LSCF_012(attributes){
-        console.log({'Lecturas':JSON.stringify(attributes)});
         $('#F_LSCD0_12_lecturas').dataTable().fnDestroy();
         $.ajax({
             url:"api/F_LSCD_012",
@@ -322,8 +321,6 @@ $(function(){
             g3.appendChild(path1);
         }
     }
-
-    
 });
 
 
