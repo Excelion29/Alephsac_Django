@@ -439,7 +439,7 @@
       </div>
     </div> -->
 
-    <div class="row">
+    <div class="row" style="display:none;" id="SECTION_FLSCD_03_CONTENT">
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
@@ -448,11 +448,13 @@
         </div>
       </div>
     </div>
+
+
     <div class="row" id="F_LSCD0_03_dosis" >
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>F-LSCD-03</h6>
+            <h6>TASA DE DOSIS GENERADO POR EL HAZ DEL INCARAD DEL LSCD</h6>
           </div>
           <div class="container-fluid" >
             <div class="row text-center">
@@ -468,7 +470,7 @@
                         <div id="cont" class="table-responsive">
                             <div class="card-footer">
                               <a type="button" style="float: right; color:white;" rel="tooltip" onclick="addDosis()" class="btn bg-gradient-success  my-1 me-1" data-original-title="" title="">Añadir Dosis</i></a>             
-                              <button type="submit" class="btn bg-gradient-primary my-1 me-1">Calcular</button>   
+                              <button type="submit" class="btn bg-gradient-secondary my-1 me-1">Calcular</button>   
                             </div>
                             <body onload="createTableLSCD036();"></body>                            
                           </div>
@@ -504,7 +506,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>F-LSCD-012</h6>
+            <h6>TOMA DE DATOS DE CALIBRACIÓN DE MONITORES DE RADIACIÓN</h6>
           </div>
           <div class="container-fluid" >
             <div class="row text-center">              
@@ -534,7 +536,7 @@
                       </thead>
                     </table>
                     <div class="card-footer">      
-                      <button type="submit" class="btn bg-gradient-primary my-1 me-1">Calcular</button> 
+                      <button type="submit" class="btn bg-gradient-secondary my-1 me-1">Calcular</button> 
                     </div>
                 </form>
                 </div>
@@ -582,7 +584,7 @@
       <div class="col-12">
         <div class="card mb-4">
           <div class="card-header pb-0">
-            <h6>Insert. Cal. Mon</h6>
+            <h6>INCERTIDUMBRE EN EL LSCD</h6>
           </div>
           <div class="container-fluid" >
             <div class="row text-center">  
@@ -597,7 +599,7 @@
                         <div class="d-flex align-items-start flex-column justify-content-left">
                           <h6 class="mb-0 text-sm">Dosimetría C.I patrón de aleph SAC</h6>
                         </div>
-                        <select class="btn btn-link pe-3 ps-0 mb-0 ms-auto"  name="" id="">
+                        <select class="btn btn-link pe-3 ps-1 mb-0 ms-auto"  name="" id="">
                           <option disabled selected value="">TIPO de INCERT.</option>
                           <option value = "Tipo A">Tipo A</option>
                           <option value = "Tipo B">Tipo B</option>
@@ -688,9 +690,11 @@
                 </div>
               </div> 
               <div class="col-12 col-xl-8">
-                <div class="card mb-4">
-                  <div id="calibraciones_contenedor" class="nav-wrapper position-relative start-0">
-                  </div>
+                <div id="calibraciones_contenedor">
+                  
+                    
+                   
+                    
                 </div>
               </div>              
             </div>
