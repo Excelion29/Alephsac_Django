@@ -1,20 +1,21 @@
-from io import StringIO
-from urllib import request
-import PyPDF2
-import os
+import fitz
+from django.conf import settings
+from api.models import Document
 
 class PDF_READ_REPOSITORY():
 
     def PDF_READ_POST(self):
-        name_pdf = self.name
-
-        sample_pdf = open(r'C:\xampp\htdocs\AlephGroup\OT 15139SP.pdf', mode='rb')  
-        pdfdoc = PyPDF2.PdfFileReader(sample_pdf)
-
-        # file = open(x,"rb")
-        # reader = PyPDF2.PdfFileReader(file)
-
-        PDF_READER = {"pdf_name":name_pdf,"pdf_pages":pdfdoc.numPages,"pdf_info":pdfdoc.documentInfo,"pdf_context":pdfdoc.getPage(0).extractText()}
+        texto=[]
+        document = Document(title  = self.name,uploadedFile = self)
 
 
-        return PDF_READER
+        document.save()
+        pdf_document = settings.MEDIA_ROOT+'\\'+str(document.uploadedFile) 
+        pdf_title = document.title 
+        documento = fitz.open(pdf_document)
+        pagina = documento.load_page(0)
+        for pagina in  documento:
+            texto.append(pagina.get_text().encode("utf8"))
+
+        return {"pags":documento.page_count,"Metadada":documento.metadata,"context":texto,"title":pdf_title}
+    

@@ -516,12 +516,15 @@
                 <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <form method="POST" action="" name='upload_form' id='upload_form' enctype="multipart/form-data">
+                      <form method="POST" action="" id='upload_form' enctype="multipart/form-data">
                         {% csrf_token %}
                         <label for="formFile" class="form-label">Default file input example</label>
                         <input class="form-control" type="file" id="formFile_OT">
                       </form>
                     </div>
+                    <div id="title"></div>
+                    <div id="metadata"></div>
+                    <div id="context"></div>
                   </div>
                 </div>
               </form>
